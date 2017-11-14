@@ -1,0 +1,8 @@
+{
+  "name": "SkateSpot_Lite",
+  "app_id": "4aa8053f",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

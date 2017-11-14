@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Sign In</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="pushToSignUp()">
+        Sign Up
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <form #emailUser="ngForm" (ngSubmit)="signInWithEmail(emailUser)">
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input
+          type="email"
+          name="email"
+          ngModel
+          required
+          #emailInput="ngModel">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input
+          type="password"
+          name="password"
+          ngModel
+          required
+          #passwordInput="ngModel">
+        </ion-input>
+      </ion-item>
+      <div padding-left padding-top>
+        <button [disabled]="!emailUser.form.valid" ion-button>Sign In</button>
+        <br />
+        <button color="secondary" ion-button (click)="promptReset()">
+          Forgot your password?
+        </button>
+      </div>
+    </form>
+  </ion-grid>
+</ion-content>
+
+<!--<ion-footer>-->
+  <!--<ion-toolbar text-center>-->
+    <!--<button ion-button clear (click)="signInWithFacebook()">Sign in with Facebook</button>-->
+  <!--</ion-toolbar>-->
+<!--</ion-footer>-->

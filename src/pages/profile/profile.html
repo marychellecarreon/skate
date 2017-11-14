@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row *ngIf="username">
+      <h3>Hi, {{ username }}!</h3>
+    </ion-row>
+    <ion-row>
+      <button ion-button>Reset Password</button>
+    </ion-row>
+    <ion-row>
+      <button ion-button color="danger" (click)="signOut()">Sign Out</button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

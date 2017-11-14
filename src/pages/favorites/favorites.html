@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Favorites</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="favorite-content" padding>
+
+  <ion-card *ngFor="let fav of favorites" (click)="pushToSpot(fav)" class="favorite-card">
+    <img src="{{fav.spot.featured_image}}" class="favorite-image"/>
+    <ion-card-content class="favorite-name">{{fav.spot.name}}</ion-card-content>
+    <ion-card-content class="favorite-address">{{fav.spot.street_name}}, {{fav.spot.city}}</ion-card-content>
+  </ion-card>
+</ion-content>

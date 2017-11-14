@@ -1,0 +1,95 @@
+page-home {
+  ion-card-title {
+    text-align: center;
+  }
+
+  .intro-card {
+    text-align: center;
+  }
+
+  .map-card {
+    box-shadow: none;
+    margin: 0 0 10px 20px;
+    text-wrap: none;
+
+    p {
+      font-size: 1.2rem;
+      text-align: center;
+      padding-bottom: 8px;
+    }
+
+    img {
+      object-fit: contain;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    ion-card-title {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .home-map {
+    height: 100%;
+  }
+
+  .search-fab {
+    margin: 2vh;
+    height: 5vh;
+    width: 5vh;
+    background-color: #232626;
+    color: #4FAF34;
+    button {
+      margin: 3vh;
+      height: 5vh;
+      width: 5vh;
+      background-color: #232626;
+      color: #4FAF34;
+    }
+  }
+
+  .search-popover {
+    height: 93vh;
+    opacity:0.7;
+    filter: alpha(opacity = 0);
+    position:absolute;
+    top:0; bottom:0; left:0; right:0;
+    display:block;
+    background-color: black;
+    z-index:2;
+  }
+
+  .search-inputs {
+    position: fixed;
+    bottom: 2vh;
+    left: 2vh;
+    right: 2vh;
+    z-index: 3;
+    opacity: 1;
+  }
+
+  .search-radius {
+    color: white;
+    background-color: transparent;
+  }
+
+  .search-around {
+    color: white;
+    background-color: transparent;
+    padding-bottom: 2vh;
+  }
+
+  .search-submit {
+    background-color: #4FAF34;
+  }
+
+  .search-submit[disabled] {
+    opacity: 1;
+  }
+
+  .feedback-btn {
+    font-size: 2rem !important;
+  }
+
+}

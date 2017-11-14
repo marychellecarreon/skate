@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-navbar class="home-navbar">
+    <!--Feature disabled, stub of feature slated for release beyond 1.0-->
+    <!--<ion-buttons left>-->
+      <!--<button ion-button (click)="openMenu()">-->
+        <!--<ion-icon name="menu"></ion-icon>-->
+      <!--</button>-->
+    <!--</ion-buttons>-->
+    <ion-buttons end>
+      <button ion-button icon-only (click)="clickedProfile()">
+        <ion-icon name="person"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="pushToFeedback()">
+        <ion-icon name="clipboard" class="feedback-icon"></ion-icon>
+      </button>
+      <button ion-button (click)="pushToFavorites()">
+        <img src="assets/images/star.png" height="15px" width="auto">
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Skatespot
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ss-auth-menu *ngIf="showAuthMenu"></ss-auth-menu>
+
+  <div *ngIf="searching">
+    <div class="search-popover" (click)="dismissSearch()"></div>
+    <div class="search-inputs">
+      <ion-item class="search-radius">
+        <ion-label stacked>RADIUS</ion-label>
+        <ion-select [(ngModel)]="radius" interface="popover">
+          <ion-option value="5">5km</ion-option>
+          <ion-option value="10">10km</ion-option>
+          <ion-option value="50">50km</ion-option>
+          <ion-option value="100">100km</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="search-around">
+        <ion-label stacked>REGION</ion-label>
+        <ion-input type="text" placeholder="Sydney" [(ngModel)]="location"></ion-input>
+      </ion-item>
+      <button ion-button class="search-submit" [disabled]="location === ''" block (click)="region()">SHOW SKATE SPOTS NEAR ME</button>
+    </div>
+  </div>
+
+  <agm-map
+    class="home-map"
+    [latitude]="userLocation.lat"
+    [longitude]="userLocation.lng"
+    [zoom]="12"
+    [clickableIcons]="false"
+    [disableDefaultUI]="true"
+    [zoomControl]="false"
+    [streetViewControl]="false"
+    *ngIf="userLocationSet">
+    <agm-marker
+      [latitude]="userLocation.lat"
+      [longitude]="userLocation.lng"
+      [iconUrl]="'https://i.imgur.com/G9j0jeD.png'"
+    >
+    </agm-marker>
+    <agm-marker
+      *ngFor="let spot of spots"
+      [latitude]="spot.lat || spot.latitude"
+      [longitude]="spot.lng || spot.longitude"
+      (markerClick)="clickedSpot(spot)">
+      <agm-info-window>
+        <ion-card class="map-card" (click)="pushToSpot(spot)">
+          <ion-card-title>{{spot.name}}</ion-card-title>
+          <p>{{spot.address | shortAddress}}</p>
+          <img src="{{spot.featured_image}}">
+          <ion-card-title>Click for more info</ion-card-title>
+        </ion-card>
+      </agm-info-window>
+    </agm-marker>
+    <agm-marker
+      *ngFor="let store of stores"
+      [latitude]="store.latitude"
+      [longitude]="store.longitude"
+      [iconUrl]="'https://mt.googleapis.com/vt/icon/name=icons/onion/22-blue-dot.png'"
+      (markerClick)="clickedStore(store)">
+      <agm-info-window>
+        <ion-card class="map-card" (click)="pushToStore()">
+          <ion-card-title>{{store.name}}</ion-card-title>
+          <img src="{{store.featured_image}}">
+        </ion-card>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+
+  <ion-fab right bottom *ngIf="!searching">
+      <button ion-fab class="search-fab" (click)="presentSearch()">
+       <img src="assets/images/search.png" width="auto" height="14px">
+      </button>
+  </ion-fab>
+
+</ion-content>

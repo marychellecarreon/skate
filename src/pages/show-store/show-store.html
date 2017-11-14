@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title ngif="store">{{store.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <img src="{{store.featured_image}}" *ngIf="store">
+  <p *ngIf="store" style="padding: 10px;">{{store.description}}</p>
+  <button ion-button (click)="callStore()">Call Shop</button>
+
+  <agm-map
+    style="height:60%"
+    [latitude]="store.lat || store.latitude"
+    [longitude]="store.lng || store.longitude"
+    [zoom]="12"
+    *ngIf="store">
+    <agm-marker
+      [latitude]="store.lat || store.latitude"
+      [longitude]="store.lng || store.longitude"
+      *ngIf="store">
+      <agm-info-window
+      >
+        {{store.street_name}}
+      </agm-info-window>
+    </agm-marker>
+    <agm-marker *ngFor="let store of stores"
+                [latitude]="store.latitude"
+                [longitude]="store.longitude"
+                [iconUrl]="'https://mt.googleapis.com/vt/icon/name=icons/onion/22-blue-dot.png'"
+    ></agm-marker>
+  </agm-map>
+
+</ion-content>

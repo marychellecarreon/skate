@@ -1,0 +1,23 @@
+ss-auth-menu {
+
+  ion-toolbar, ion-grid, ion-col {
+    padding: 0 !important;
+    padding: 0 !important;
+  }
+
+  .signup-button, .signin-button {
+    height: 72px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .signup-button {
+    background-color: color($colors, secondary);
+  }
+
+  .signin-button {
+    background-color: color($colors, primary);
+  }
+}

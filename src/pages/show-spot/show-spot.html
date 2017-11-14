@@ -1,0 +1,92 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content>
+  <img class="featured-image" src="{{spot.featured_image}}" *ngIf="spot">
+  <div class="featured-image-overlay"></div>
+  <ion-grid class="overlay-grid">
+    <ion-row>
+      <ion-col col-1>
+        <button ion-button clear icon-only (click)="goBack()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-8 offset-2>
+        <h4 class="overlay-spot-name" *ngIf="spot">{{spot.name}}</h4>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-8 offset-2>
+        <p class="overlay-spot-address" *ngIf="spot">{{spot.street_name}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-toolbar no-border-top no-border-bottom class="segment-toolbar">
+    <ion-grid>
+      <ion-row>
+        <ion-col (click)="slideToInfo()">
+          INFO
+        </ion-col>
+        <ion-col (click)="slideToPhotos()">
+          PHOTOS
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+  <ion-grid class="segment-underline">
+    <ion-row>
+      <ion-col col-6 class="info-underline" *ngIf="info"></ion-col>
+      <ion-col col-6 offset-6 class="photos-underline" *ngIf="photos"></ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="holidays-alert" *ngIf="spot && spot.school_holidays">
+    <ion-row>
+      <ion-col col-1><ion-icon name="warning-outline"></ion-icon></ion-col>
+      <ion-col col-10>
+        {{spot.state}} Public School Holiday
+      </ion-col>
+      <ion-col col-1><ion-icon name="warning-outline"></ion-icon></ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-slides #slidesBody *ngIf="spot" class="content-slider" (ionSlideDidChange)="slideChanged()">
+    <ion-slide>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2>
+            <img *ngIf="weather" src="http://openweathermap.org/img/w/{{weather.icon}}.png">
+          </ion-col>
+          <ion-col col-6>
+            <p *ngIf="weather" class="weather">{{weather.temp}}c {{weather.description}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <p *ngIf="spot" class="content-name"> {{spot.name}}</p>
+      <p *ngIf="spot" class="content-address">{{spot.address}}</p>
+      <p *ngIf="spot" class="content-description">{{spot.description}}</p>
+    </ion-slide>
+    <ion-slide>
+      <ion-grid class="images-grid">
+        <ion-row>
+          <ion-col><img src="{{spot.featured_image}}"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6 *ngFor="let image of spot.images"><img src="{{image}}"></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+
+  <div class="favorite-buttons">
+    <button ion-button (click)="toggleFavourite()"
+            *ngIf="!isFavorite"
+            class="favorite-button"
+    >ADD TO FAVORITES</button>
+    <button ion-button (click)="toggleFavourite()"
+            *ngIf="isFavorite"
+            class="unfavorite-button"
+    >REMOVE FROM FAVORITES</button>
+  </div>
+</ion-content>

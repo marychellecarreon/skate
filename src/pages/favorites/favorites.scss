@@ -1,0 +1,33 @@
+page-favorites {
+  .favorite-content {
+    background-color: #F2F6F9 !important;
+  }
+
+  ion-header {
+    background-color: #ED1D25;
+  }
+
+  .favorite-card {
+    box-shadow: none;
+  }
+
+  .favorite-image {
+    max-height: 20vh;
+    object-fit: cover;
+  }
+
+  .favorite-name {
+    padding-bottom: 0;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: #494949;
+  }
+
+  .favorite-address {
+    padding-top: 0;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #9a9a9a;
+  }
+
+}

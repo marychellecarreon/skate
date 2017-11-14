@@ -1,0 +1,93 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button (click)="openMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Add a store</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form name="storeForm" #newStore="ngForm" (ngSubmit)="createStore(newStore)">
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text"
+                 name="name"
+                 ngModel
+                 #nameInput="ngModel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-input type="text" name="description"
+                 ngModel
+                 #descriptionInput="ngModel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Featured Image (url)</ion-label>
+      <ion-input type="text" name="featured_image"
+                 ngModel
+                 #featured_imageInput="ngModel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Owner</ion-label>
+      <ion-input type="text" name="owner"
+                 ngModel
+                 #ownerInput="ngModel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" name="email"
+                 ngModel
+                 #emailInput="ngModel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Phone Number</ion-label>
+      <ion-input type="tel" name="phone"
+                 ngModel
+                 #phoneInput="ngModel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Street Name</ion-label>
+      <ion-input type="text" name="street_name"
+                 ngModel
+                 #street_nameInput="ngModel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Street Number</ion-label>
+      <ion-input type="text" name="street_number"
+                 ngModel
+                 #street_numberInput="ngModel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>City</ion-label>
+      <ion-input type="text" name="city"
+                 ngModel
+                 #cityInput="ngModel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Postcode</ion-label>
+      <ion-input type="text" name="postcode"
+                 ngModel
+                 #postcodeInput="ngModel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>State</ion-label>
+      <ion-input type="text" name="state"
+                 ngModel
+                 #stateInput="ngModel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Country</ion-label>
+      <ion-input type="text" name="country"
+                 ngModel
+                 #countryInput="ngModel"></ion-input>
+    </ion-item>
+    <button ion-button block>Submit</button>
+  </form>
+
+</ion-content>
